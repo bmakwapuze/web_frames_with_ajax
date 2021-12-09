@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body class="text-primary">
+    <div class="container">
+
+
+
+        <!-- <form> -->
+
+            <div class="form-group row  ">
+                <label for="" class="col-sm-3"></label>
+                <div class="col-sm-3"> Financial Paradise</div>
+
+            </div>
+
+            <div class="form-group row ">
+                <label for="email" class="col-sm-3 ">Email</label>
+                <div class="col-sm-3">
+                    <input type="email" class="form-control border-primary" name="eml" id="email" placeholder="email">
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="password" class="col-sm-3 "> Password</label>
+
+                <div class="col-sm-3">
+                    <input type="password" class="form-control border-primary placeholder-primary" id="psw" name="psw"
+                        placeholder="password">
+                </div>
+
+            </div>
+
+
+
+
+            <div class="form-group row ">
+
+                <label for="" class="col-sm-3 ">
+                    <button class="btn bg-light text-primary btn-outline-primary  " id="button">Login</button>
+                </label><a class="col-sm-3" href="register.html">No Account? Register</a>
+
+            </div>
+
+            <div class="d-flex justify-content-start">
+                <a href="forgot-password.html">Forgot Password</a>
+
+
+
+
+            </div>
+    </div>
+    </div>
+    <!-- </form> -->
+
+    </div>
+    <script>
+
+        $(document).ready(function () {
+            $("button").click(function () {
+                var info = {
+
+                    email: $("#email").val(),
+
+                    password: $("#psw").val(),
+                };
+
+                $.post("http://localhost:8001/test",
+                    JSON.stringify(info),
+                    function (data, status) {
+                        console.log(data);
+                        if (data["login"]=="successful") {
+
+                            window.open('home.html');
+
+                        }
+                        else {
+                            alert("login");
+                        }
+
+                    });
+            });
+        });
+
+
+    </script>
+
+
+
+</body>
+
+</html>
